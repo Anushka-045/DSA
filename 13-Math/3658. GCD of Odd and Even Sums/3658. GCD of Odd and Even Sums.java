@@ -1,1 +1,5 @@
-class Solution {    public int gcdOfOddEvenSums(int n) {        return n;    }}
+1class Solution {
+2    public int gcdOfOddEvenSums(int n) {
+3        return n;
+4    }
+5}
