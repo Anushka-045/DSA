@@ -1,16 +1,20 @@
 1class Solution {
-2    static{
-3        for (int i=0;i<50;i++){
-4            maxSubArray(new int[] {0,-2,3});
+2    public int maxSubArray(int[] nums) {
+3        if(nums.length==1){
+4            return nums[0];
 5        }
-6    }
-7    public static int maxSubArray(int[] nums) {
-8        int c=nums[0];
-9        int b=nums[0];
-10        for (int i = 1; i<nums.length; i++) {
-11            c= Math.max(c+ nums[i], nums[i]);
-12            b = Math.max(b, c);
-13        }
-14        return b;
-15    }
-16}
+6        int sum = 0;
+7        int max = Integer.MIN_VALUE;
+8        for(int i:nums){
+9            sum+=i;
+10            if(sum>max){
+11                max=sum;
+12            }
+13            if(sum<0){
+14                sum=0;
+15            }
+16        }
+17        return max;
+18        
+19    }
+20}
