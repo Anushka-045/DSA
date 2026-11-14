@@ -1,66 +1,38 @@
-1//TLE
-2// class Solution {
-3//     public int maxProfit(int[] prices) {
-4//         int t=0;
-5//         for (int j=0;j< prices.length;j++){
-6//             for(int i=j+1;i<prices.length;i++){
-7//                 int s= prices[i]-prices[j];
-8//                 if(s>t){
-9//                     t=s;
-10//                 }
-11//             }
-12//         }
-13//         return t;
-14//     }
-15    
-16// // }
-17class Solution {
-18    public int maxProfit(int[] prices) {
-19        int min = prices[0];
-20        int max = 0;
-21        for (int i = 1; i < prices.length; i++) {
-22            if (prices[i] < min) {
-23                min = prices[i];
-24            }
-25            int profit = prices[i] - min;
-26            if (profit > max) {
-27                max = profit;
-28            }
-29        }
-30        return max;
-31    }
-32}
-33
-34// Initial: min = 7, max = 0
-35// prices = {7, 1, 5, 3, 6, 4}):
-36// i = 1, prices[i] = 1
-37//   prices[i] < min -> update min = 1
-38//   profit = prices[i] - min = 1 - 1 = 0
-39//   profit <= max -> max stays 0
-40//   --> state after i=1: min = 1, max = 0
-41
-42// i = 2, prices[i] = 5
-43//   prices[i] >= min -> min stays 1
-44//   profit = prices[i] - min = 5 - 1 = 4
-45//   profit > max -> update max = 4
-46//   --> state after i=2: min = 1, max = 4
-47
-48// i = 3, prices[i] = 3
-49//   prices[i] >= min -> min stays 1
-50//   profit = prices[i] - min = 3 - 1 = 2
-51//   profit <= max -> max stays 4
-52//   --> state after i=3: min = 1, max = 4
-53
-54// i = 4, prices[i] = 6
-55//   prices[i] >= min -> min stays 1
-56//   profit = prices[i] - min = 6 - 1 = 5
-57//   profit > max -> update max = 5
-58//   --> state after i=4: min = 1, max = 5
-59
-60// i = 5, prices[i] = 4
-61//   prices[i] >= min -> min stays 1
-62//   profit = prices[i] - min = 4 - 1 = 3
-63//   profit <= max -> max stays 5
-64//   --> state after i=5: min = 1, max = 5
-65
-66// Final answer: max = 5
+1// class Solution {
+2//     public int maxProfit(int[] prices) {
+3//         int min=0;
+4//         int max = 0;
+5//         for(int j=0;j<prices.length;j++){
+6//             int profit=prices[j]-prices[min];
+7//             if(profit>max){
+8//                 max=profit;
+9//             }
+10//             if(prices[j]<prices[min]){
+11//                 min=j;
+12//             }
+13
+14//         }
+15
+16//         return max;
+17//     }
+18// }
+19class Solution {
+20    public int maxProfit(int[] prices) {
+21        int minLoc =0;
+22        int min = Integer.MAX_VALUE;
+23        int maxLoc = -1;
+24        int maxProfit = 0;
+25        for (int i = 0; i < prices.length; i++) {
+26            if (prices[i]<min) {
+27                minLoc=i;
+28                min=prices[i];
+29                continue;
+30            }
+31            if (prices[i]-min>maxProfit) {
+32                maxProfit=prices[i]-min;
+33                maxLoc=i;
+34            }
+35        }
+36        return maxProfit;
+37    }
+38}
