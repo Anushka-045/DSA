@@ -13,7 +13,7 @@
 13    public boolean checkPerfectNumber(int num) {
 14        if (num <= 1) return false;
 15        int s = 1;
-16        for (int i = 2; i <= Math.sqrt(num); i++) {
+16        for (int i = 2; i <= Math.sqrt(num); i++) {// 2 because if i num will be added 
 17            if (num % i == 0) {
 18                s += i;
 19
