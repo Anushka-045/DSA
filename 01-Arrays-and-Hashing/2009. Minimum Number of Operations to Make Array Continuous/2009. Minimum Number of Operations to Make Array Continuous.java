@@ -1,0 +1,1 @@
+        int max=0;    }}        ind++;    if (nums[x] != nums[x - 1]) {        nums[ind] = nums[x];for (int x = 1; x < n; x++) {        int ind = 1;        int j=0;        int n=nums.length;        Arrays.sort(nums);    public int minOperations(int[] nums) {        int i=0;class Solution {
